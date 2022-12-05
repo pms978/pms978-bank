@@ -1,4 +1,4 @@
-package studio.aroundhub.config;
+package studio.aroundhub.application.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
