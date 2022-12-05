@@ -1,17 +1,32 @@
 package studio.aroundhub.application.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 public class HelloController {
+
+    //private final Logger logger = LoggerFactory.getLogger("PostController");
+    //이 방식도 있지만 어노테이션 방식을 이용하면 더 간단하게 가능 @Slf4j
     @GetMapping("hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name){
+        log.info("hello method");
+        //logger.info("hello method");
         return String.format("Hello %s", name);
     }
 
+    @GetMapping("/hello/{text}")
+    public String hello2(@PathVariable String text){
+        log.info(text);
+        log.info("input data {}", text);
+        //logger.info(text);
+        //logger.info("input data : {}", text);
+        //logger.info("input data : {} , {}", "text = ", text);
+        return "hello";
+    }
     @PostMapping("/v1/add")
     public String add(int mount){
         //입금하는 로직
