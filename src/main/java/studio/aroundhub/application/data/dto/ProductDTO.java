@@ -1,4 +1,4 @@
-package studio.aroundhub.application.dto;
+package studio.aroundhub.application.data.dto;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -9,18 +9,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
-import studio.aroundhub.data.entity.Product;
+
+import studio.aroundhub.application.data.entity.Product;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Builder
-@RedisHash(value = "product", timeToLive = 60)
 public class ProductDTO {
 
-  //@Size(min = 8, max = 8) // abcdefg
   @NotNull
   private String productId;
 
